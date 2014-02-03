@@ -41,8 +41,13 @@ def create_or_use_repo(gh, bookmark_content):
 
 def get_starred_repos(gh):
     starred_repos = []
+    login = gh.user().login
     for repo in gh.iter_starred():
-        starred_repos.append('* [%s] (%s) ' % (repo.full_name, repo.html_url))
+        # Filter out your own repos (forked and private)
+        if login != str(repo.owner):
+            repo_string = '###%s (%d:star:)' % (repo.full_name, repo.stargazers)
+            repo_string += '\r\n%s (%s)' % (repo.description.encode('ascii', 'ignore'), repo.html_url)
+            starred_repos.append(repo_string)
 
     starred_repos = sorted(starred_repos)
     return '\n'.join(starred_repos)

@@ -36,8 +36,4 @@ Thumbs.db
 *.swp
 *.swo
 
-# Don't include composer lock
-composer.lock
-
-# Don't include Vendors directory
-Vendors/
+bookmark.md
