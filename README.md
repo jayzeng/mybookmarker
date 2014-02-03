@@ -1,6 +1,6 @@
 mybookmarker
 ============
-![MyBookMarker](https://cdn1.iconfinder.com/data/icons/meBaze-Freebies/48/bookmark.png)
+![MyBookMarker](https://cdn1.iconfinder.com/data/icons/meBaze-Freebies/32/add-address.png)
 The idea is simple: pull all starred repos and convert them into another repoistory on Github
 
 Project setup:
