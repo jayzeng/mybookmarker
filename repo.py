@@ -24,6 +24,7 @@ def create_or_use_repo(gh, bookmark_content):
     # See if rpeo already exists
     for repo in gh.iter_repos():
         if repo_name == repo.name:
+            print "Updating README.md in %s (%s)" % (repo_name,repo.html_url )
             return update_bookmark(gh, repo, bookmark_content)
 
     # No repo yet, go ahead to create a repo
@@ -35,7 +36,7 @@ def create_or_use_repo(gh, bookmark_content):
 
     res = gh.create_repo(**repo)
     if res:
-       print("Created {0} successfully.".format(res.name))
+       print("Created repo {0} successfully.".format(res.name))
 
     update_bookmark(gh, res, bookmark_content)
 
@@ -50,7 +51,7 @@ def get_starred_repos(gh):
             starred_repos.append(repo_string)
 
     starred_repos = sorted(starred_repos)
-    return '\n'.join(starred_repos)
+    return starred_repos
 
 class PercentTemplate(string.Template):
     delimiter = '%'
@@ -61,6 +62,8 @@ if __name__ == "__main__":
 
     gh = login()
     starred_repos = get_starred_repos(gh)
+    print "%d bookmarks are imported" % len(starred_repos)
+    starred_repos = '\n'.join(starred_repos)
     bookmark_template = PercentTemplate(content)
 
     # @TODO need a better way
