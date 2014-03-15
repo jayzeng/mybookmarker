@@ -6,11 +6,7 @@ import hashlib
 import sys
 import ConfigParser
 
-CACHE_FILE = '.cache'
-
 def login(config_reader):
-    # Populate env token or use prompt
-    # @TODO read from a config or env to pull token
     token = config_reader.get('github', 'token')
     return github3.login(token=token)
 
