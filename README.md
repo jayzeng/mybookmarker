@@ -39,8 +39,11 @@ $ pip install -r requirements.txt
 
 # Create a token
 - Create new token https://github.com/settings/tokens/new
-- Give it a app name
-- Register the token as an environmental variable
+- Give it an app name
+- Put the token in github section in settings.ini
+
+# How to run?
+python repo.py
 
 # Example
 https://github.com/jayzeng/mybookmark
